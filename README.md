@@ -1,0 +1,4 @@
+ ## Text-Summarization-Using-T5
+ Text summarization is a very important specially for giant company like Johanson and Johnson, Google, Apple, H&M. Because everyday they get huge number of email, text for 
+ their cumstomer. And reading and understanding full text is difficult and time consumed. For this to solve this problem we can use AI/ Algorithm to sumamrize text and 
+ understanding within a short time.
