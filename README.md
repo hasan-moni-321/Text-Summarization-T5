@@ -4,3 +4,6 @@
  understanding within a short time.
 
 Here I solved a kaggle Problem https://www.kaggle.com/sunnysai12345/news-summary 
+
+I used T5 Algorithm https://ai.googleblog.com/2020/02/exploring-transfer-learning-with-t5.html
+
