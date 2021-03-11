@@ -20,7 +20,7 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import warnings
 warnings.filterwarnings('ignore')
 
-#import config 
+import config_file
 import engine 
 import dataset 
 
@@ -284,7 +284,7 @@ print("Shape of train_dataset is :{} Shape of valid_dataset is :{}".format(train
 ##############################################################
 # Defining Tokenizer
 ################################################################
-
+tokenizer = config_file.tokenizer
 
 # Creating the Training and Validation dataset for further creation of Dataloader
 training_set = dataset.CustomDataset(train_dataset, tokenizer, config.MAX_LEN, config.SUMMARY_LEN)
@@ -309,11 +309,12 @@ training_loader = DataLoader(training_set, **train_params)
 val_loader = DataLoader(val_set, **val_params)
 
 
-
-# Loading Model
-model = T5ForConditionalGeneration.from_pretrained("t5-base")
+################################################################################################
+# Loading Model, device, optimizer
+#################################################################################################
+device = config_file.device
+model = config_file.model
 model = model.to(device)
-
 # Optimizer 
 optimizer = torch.optim.Adam(params= model.parameters(), lr=config.LEARNING_RATE)
 
@@ -326,6 +327,7 @@ for epoch in range(config.TRAIN_EPOCHS):
     engine.train(epoch, tokenizer, model, device, training_loader, optimizer)
 
 
+    
 # Validation loop and saving the resulting file with predictions and acutals in a dataframe.
 # Saving the dataframe as predictions.csv
 print('Now generating summaries on our fine tuned model for the validation dataset and saving it in a dataframe')
