@@ -31,14 +31,14 @@ wandb.init(project="transformers_tutorials_summarization")
 
 # wandb for holding hyperparameters  
 config = wandb.config         
-config.TRAIN_BATCH_SIZE = 2    
-config.VALID_BATCH_SIZE = 2    
-config.TRAIN_EPOCHS = 2        
+config.TRAIN_BATCH_SIZE = 32    
+config.VALID_BATCH_SIZE = 32    
+config.TRAIN_EPOCHS = 20        
 config.VAL_EPOCHS = 1 
 config.LEARNING_RATE = 1e-4    
 config.SEED = 42              
 config.MAX_LEN = 512
-config.SUMMARY_LEN = 150 
+config.SUMMARY_LEN = 50 
 
 # Set random seeds and deterministic pytorch for reproducibility
 torch.manual_seed(config.SEED) 
